@@ -65,8 +65,8 @@ public class Bombos {
 		selecciones.add(new Seleccion(35L,new Pais(35L,"Arabia Saudita"),Confederaciones.confederaciones()[3]));
 		selecciones.add(new Seleccion(36L,new Pais(36L,"Sudáfrica"),Confederaciones.confederaciones()[4]));
 	
-		Bombo bombo2 = new Bombo(2L, "Bombo 2",selecciones);
-		return bombo2;
+		Bombo bombo3 = new Bombo(3L, "Bombo 3",selecciones);
+		return bombo3;
 	}
 	
 	public static BomboConRepechaje bombo4() {

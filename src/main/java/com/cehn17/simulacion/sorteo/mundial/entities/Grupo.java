@@ -75,7 +75,128 @@ public class Grupo {
 //				+ ", repechaje=" + repechaje + ", forzado=" + forzado + "]";
 	}
 	
+	public boolean tieneConmebol() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(1L, "CONMEBOL"))) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
 	
+	public boolean tieneConcacaf() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(2L, "CONCACAF"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean tieneUEFA() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(3L, "UEFA"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean tieneDosDeUEFA() {
+		if(this.selecciones.size() == 0)
+			return false;
+		int cont = 0;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(3L, "UEFA"))) {
+				cont++;
+			}
+		}
+		return cont == 2;
+	}
 
+	public boolean tieneAFC() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(4L, "AFC"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean tieneCAF() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(5L, "CAF"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean tieneOFC() {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(6L, "OFC"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean tieneConfederacion(Confederacion confederacion) {
+		if(this.selecciones.size() == 0)
+			return false;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(confederacion) && !confederacion.equals(new Confederacion(3L, "UEFA"))) {
+				return true;
+			}
+		}
+		
+		if(confederacion.equals(new Confederacion(3L, "UEFA")) && this.tieneDosDeUEFA()){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean tieneDosUefaYUnoCaf() {
+		int contUefa = 0;
+		int contCaf = 0;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(3L, "UEFA"))){
+				contUefa++;
+			}
+			if(seleccion.getConfederacion().equals(new Confederacion(5L, "CAF"))){
+				contCaf++;
+			}
+		}
+		return contUefa == 2 && contCaf == 1;
+				
+	}
+	
+	public boolean tieneUnoUefaYunoCAF() {
+		int contUefa = 0;
+		int contCaf = 0;
+		for (Seleccion seleccion : selecciones) {
+			if(seleccion.getConfederacion().equals(new Confederacion(3L, "UEFA"))){
+				contUefa++;
+			}
+			if(seleccion.getConfederacion().equals(new Confederacion(5L, "CAF"))){
+				contCaf++;
+			}
+		}
+		return contUefa == 1 && contCaf == 1;
+	}
 	
 }
